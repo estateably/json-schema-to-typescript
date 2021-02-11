@@ -29,10 +29,12 @@ export interface JSONSchema extends JSONSchema4 {
    * schema extension to support numeric enums
    */
   tsEnumNames?: string[]
+  'x-tsEnumNames'?: string[]
   /**
    * schema extension to support custom types
    */
   tsType?: string
+  'x-tsType'?: string
 }
 
 export const Parent = Symbol('Parent')
