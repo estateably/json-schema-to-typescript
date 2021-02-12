@@ -11,7 +11,7 @@ import {isCompound, JSONSchema, SchemaType} from './types/JSONSchema'
  */
 export function typesOfSchema(schema: JSONSchema): readonly [SchemaType, ...SchemaType[]] {
   // tsType is an escape hatch that supercedes all other directives
-  if (schema.tsType) {
+  if (schema.tsType || schema['x-tsType']) {
     return ['CUSTOM_TYPE']
   }
 

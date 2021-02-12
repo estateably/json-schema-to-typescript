@@ -114,6 +114,7 @@ export interface JSONSchemaWithDefinitions extends NormalizedJSONSchema {
 
 export interface CustomTypeJSONSchema extends NormalizedJSONSchema {
   tsType: string
+  'x-tsType': string
 }
 
 export const getRootSchema = memoize(

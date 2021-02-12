@@ -157,7 +157,7 @@ function parseNonLiteral(
       return {
         comment: schema.description,
         keyName,
-        params: schema.tsType!,
+        params: schema.tsType || schema['x-tsType']!,
         standaloneName: standaloneName(schema, keyNameFromDefinition, usedNames),
         type: 'CUSTOM_TYPE'
       }
