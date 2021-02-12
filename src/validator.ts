@@ -4,6 +4,44 @@ import {mapDeep} from './utils'
 type Rule = (schema: JSONSchema) => boolean | void
 const rules = new Map<string, Rule>()
 
+
+
+/*
+
+This validation have been removed because is limiting the use of:
+```
+{
+  allOf:[
+    {
+      type: "object",
+      properties:{
+        myEnum:{
+          type: "string",
+          enum:[
+            "A",
+            "B"
+          ]
+        }
+      }
+    },
+    oneOf:[
+      {
+        type: "object",
+        required:["otherProp"]
+        properties:{
+          myEnum:{
+            type: "string",
+            enum:[
+              "A"
+            ]
+          },
+          otherProp:{ type: "string" }
+        }
+      }
+    ]
+  ]
+}
+```
 rules.set('Enum members and x-tsEnumNames must be of the same length', schema => {
   if (schema.enum && schema['x-tsEnumNames'] && schema.enum.length !== schema['x-tsEnumNames'].length) {
     return false
@@ -15,6 +53,7 @@ rules.set('Enum members and tsEnumNames must be of the same length', schema => {
     return false
   }
 })
+*/
 
 rules.set('tsEnumNames must be an array of strings', schema => {
   if (schema.tsEnumNames && schema.tsEnumNames.some(_ => typeof _ !== 'string')) {
